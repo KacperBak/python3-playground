@@ -106,7 +106,3 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
-.idea/
-App.py
-python3-playground.iml
