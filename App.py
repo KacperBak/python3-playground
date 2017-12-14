@@ -56,8 +56,43 @@ def use_format_parameter():
     print(named_parameter_string)
 
 
+def use_dictionary():
+    dict = {}
+    dict[0] = 0
+    dict["one"] = "one"
+    dict["two"] = "two"
+    dict[3] = "three"
+    print("size of the dictionary: " + str(len(dict)))
+    for value in dict.values():
+        print(value)
+
+
+def use_dictionary_with_frozenset():
+    # create keys
+    kacperbak = frozenset({"Kacper", "Bak"})
+    michaelmayer = frozenset({"Michael", "Mayer"})
+    stefandaum = frozenset({"Stefan", "Daum"})
+
+    # create dictionary
+    phonebook = {kacperbak : "0821-123", michaelmayer : "0821-456", stefandaum : "0821-789"}
+
+    # test
+    print(phonebook.get(kacperbak))
+
+    # test with default result
+    olafmaier = frozenset({"Olaf", "Maier"})
+    defaultresult = phonebook.get(olafmaier, "0815")
+    print(defaultresult)
+    print("Is Olaf part of the phonebook?: {ispart}".format(ispart=(olafmaier in phonebook)))
+
+    # test with setdefault result
+    setdefaultresult = phonebook.setdefault(olafmaier, "0815")
+    print(setdefaultresult)
+    print("Is Olaf part of the phonebook?: {ispart}".format(ispart=(olafmaier in phonebook)))
+
+
 def main():
-    use_format_parameter()
+    use_dictionary_with_frozenset()
 
 
 main()
