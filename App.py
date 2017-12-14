@@ -1,7 +1,7 @@
 import sys
 
 
-def execute_triple_quoted_string():
+def use_triple_quoted_string():
     triple_qutoed_string = """"Hello" world'!'"""
     print(triple_qutoed_string)
 
@@ -11,15 +11,22 @@ def use_input_and_output():
     print(input_as_int)
 
 
-def main():
-    execute_triple_quoted_string()
-    use_input_and_output()
+def use_intersection():
+    set0 = {1, 2, 3}
+    list0 = [2, 3, 4]
+    set1 = set(list0)
+    print(set0 & set1)
 
-    # arg0 = sys.argv[0]
-    # arg1 = sys.argv[1]
-    # print("0 argument: " + arg0)
-    # print("1st argument: " + arg1)
- 
+
+def use_passed_arguments(args):
+    number_of_passed_arguments = len(args)
+    print("Number of passed arguments: " + str(number_of_passed_arguments))
+    for arg in args:
+        print(arg)
+
+
+def main():
+    use_passed_arguments(sys.argv)
 
 
 main()
