@@ -1,6 +1,7 @@
 import sys
 import string
 
+
 def use_triple_quoted_string():
     triple_qutoed_string = """"Hello" world'!'"""
     print(triple_qutoed_string)
@@ -91,8 +92,52 @@ def use_dictionary_with_frozenset():
     print("Is Olaf part of the phonebook?: {ispart}".format(ispart=(olafmaier in phonebook)))
 
 
+def use_range_function():
+    # create a list using the range function
+    two_step_list = list(range(0, 10, 2))
+    print("two step list: " + str(two_step_list))
+
+    # for loop with indices using the range function
+    for index in range(10):
+        print("index: " + str(index))
+
+    # for loop with indices using the range function over a collection
+    for index in range(len(two_step_list)):
+        print("""index: '{index}' value: '{value}'""".format(index=index, value=two_step_list[index]))
+
+
+def use_for_loops():
+    tuple_list = [(1,2),(3,4),(5,6)]
+    result0 = 0
+    result1 = 0
+
+    # sum up tuples with index
+    for t in tuple_list:
+        result0 = result0 + (t[0] * t[1])
+
+    # sum up tuples with named parameters
+    for x, y in tuple_list:
+        result1 = result1 + (x * y)
+
+    # print both results
+    print("""result0: '{result0}' result1: '{result1}'""".format(result0=result0, result1=result1))
+
+    # use the 'enumerate' function: it return the items of the list as tuples
+    list_0 = [100, 200, 300, 400]
+    enumeration = enumerate(list_0) # (1, 100), (2, 200) ...
+    for index, value in enumeration:
+        print("""index: '{index}', value: '{value}'""".format(index=index, value=value))
+
+    # use the zip function to combine two lists as one tupled list
+    list_a = ['a', 'b', 'c']
+    zipped_list = zip(list_a, list_0)
+    for a, b in zipped_list:
+        print("""a: '{a}', b: '{b}'""".format(a=a, b=b))
+
+
 def main():
-    use_dictionary_with_frozenset()
+    use_for_loops()
+    use_range_function()
 
 
 main()
