@@ -135,9 +135,26 @@ def use_for_loops():
         print("""a: '{a}', b: '{b}'""".format(a=a, b=b))
 
 
+def use_comparison():
+    x = [100]
+    y = [x, 100]
+
+    # check for reference
+    if x is y[0]:
+        print("true - same object")
+    else:
+        print("false - not same object")
+
+    # check for value
+    if x[0] == y[1]:
+        print("true - same value")
+    else:
+        print("false - not same value")
+
 def main():
-    use_for_loops()
-    use_range_function()
+    # use_for_loops()
+    # use_range_function()
+    use_comparison()
 
 
 main()
