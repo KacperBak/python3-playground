@@ -1,6 +1,6 @@
 import sys
 import string
-
+import os
 
 def use_triple_quoted_string():
     triple_qutoed_string = """"Hello" world'!'"""
@@ -138,23 +138,45 @@ def use_for_loops():
 def use_comparison():
     x = [100]
     y = [x, 100]
+    z = [100]
 
     # check for reference
-    if x is y[0]:
-        print("true - same object")
+    if x is z:
+        print("z: true - same object")
     else:
-        print("false - not same object")
+        print("z: false - not same object")
 
     # check for value
-    if x[0] == y[1]:
-        print("true - same value")
+    if x == z:
+        print("z: true - same value")
     else:
-        print("false - not same value")
+        print("z: false - not same value")
+
+    # check for reference
+    if x is y:
+        print("y: true - same object")
+    else:
+        print("y: false - not same object")
+
+    # check for value
+    if x == y:
+        print("y: true - same value")
+    else:
+        print("y: false - not same value")
+
+
+def use_file_system_operations():
+    # Where is the Python program at the moment at the file system?
+    cwd = os.getcwd()
+    print("current working directory: " + str(cwd))
+    print("current working directory: " + str(cwd))
+
 
 def main():
     # use_for_loops()
     # use_range_function()
     use_comparison()
+    # use_file_system_operations()
 
 
 main()
