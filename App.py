@@ -166,17 +166,38 @@ def use_comparison():
 
 
 def use_file_system_operations():
-    # Where is the Python program at the moment at the file system?
-    cwd = os.getcwd()
-    print("current working directory: " + str(cwd))
-    print("current working directory: " + str(cwd))
+    # path basics
+    absolute_current_working_dir = os.getcwd()
+    print(os.getcwd())           # /Users/kaba/Projects/python3-playground
+    print(os.curdir)             # always use 'curdir' instead of '.'
+    print(os.pardir)             # always use 'pardir' instead of '..'
+    print(os.listdir(os.curdir)) # ['.git', '.gitignore', '.idea', 'App.py', 'python3-playground.iml', 'test', ...]
+
+    # dealing with paths in a platform unspecific way
+    target_dir = "dir0"                          # test/dir0
+    text_file = "file0.txt"                      # test/dir0/file0.txt
+
+    # join a path
+    print(os.sep)                                # always use 'path' instead of '/' or '\' -> always use 'os.path.join'
+    absolute_target_dir = os.path.join(os.getcwd(), "test", target_dir)
+    print(absolute_target_dir)                   # /Users/kaba/Projects/python3-playground/test/dir0
+    print(os.path.isdir(absolute_target_dir))
+
+    # split a path
+    print(os.path.split(absolute_target_dir))    # ('/Users/kaba/Projects/python3-playground', 'dir0') as tuple
+    print(os.path.dirname(absolute_target_dir))  # /Users/kaba/Projects/python3-playground
+    print(os.path.basename(absolute_target_dir)) # dir0
+
+    # file extensions
+    absolute_text_file_path = os.path.join(os.getcwd(), target_dir, text_file)
+    print(absolute_text_file_path)                    # /Users/kaba/Projects/python3-playground/test/dir0/file0.txt
+    print(os.path.splitext(absolute_text_file_path))  # ('/Users/kaba/Projects/python3-playground/test/dir0/file0', '.txt')
 
 
 def main():
     # use_for_loops()
     # use_range_function()
-    use_comparison()
-    # use_file_system_operations()
-
+    # use_comparison()
+    use_file_system_operations()
 
 main()
