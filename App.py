@@ -2,6 +2,7 @@ import sys
 import string
 import os
 import shutil
+import json
 
 
 def use_triple_quoted_string():
@@ -235,11 +236,35 @@ def use_file_system_operations():
         print("files: '{files}'".format(files=str(files)))
 
 
+def get_value_from_dict(key, dict):
+    result = None
+    if key in dict:
+        result = dict[key]
+    return result
+
+
+def read_values_from_json_file():
+    read_file_path = os.path.join(os.getcwd(), "test", "read.json")
+    read_file_object = open(read_file_path, "r")
+    file_content_as_string = "".join(read_file_object.readlines())
+    file_content_as_dictionary = json.loads(file_content_as_string)
+
+    # data structure
+    first_name = get_value_from_dict("firstname", file_content_as_dictionary)
+    last_name = get_value_from_dict("lastname", file_content_as_dictionary)
+    age = get_value_from_dict("age", file_content_as_dictionary)
+
+    # print results
+    print("""firstname: '{firstname}', lastname: '{lastname}', age: '{age}'""".format(firstname=first_name, lastname=last_name, age=age))
+
+
+
 def main():
     # use_for_loops()
     # use_range_function()
     # use_comparison()
-    use_file_system_operations()
+    # use_file_system_operations()
+    read_values_from_json_file()
 
 
 main()
