@@ -1,6 +1,8 @@
 import sys
 import string
 import os
+import shutil
+
 
 def use_triple_quoted_string():
     triple_qutoed_string = """"Hello" world'!'"""
@@ -193,11 +195,51 @@ def use_file_system_operations():
     print(absolute_text_file_path)                    # /Users/kaba/Projects/python3-playground/test/dir0/file0.txt
     print(os.path.splitext(absolute_text_file_path))  # ('/Users/kaba/Projects/python3-playground/test/dir0/file0', '.txt')
 
+    # most important status info
+    # os.path.exists()    # TRUE for existing path or file descriptor
+    # os.path.isfile()    # TRUE for existing file and symbolic link (cause it follows the link)
+    # os.path.islink()    # TRUE for existing symbolic link, always false if runtime does not support symbolic links
+    # os.path.isdir()     # TRUE for existing directory and symbolic link (cause it follows the link)
+    # os.path.ismount()   # TRUE if 'path' is a point in a file system where a different file system has been mounted
+    # os.path.isabs()     # TRUE if 'path' begins with a slash
+
+    # os.stat()           # Get detail status information of a file or a file descriptor. See docs for details.
+    # os.path.getsize()   # Get size of the file in bytes, see docs for symbolic links
+    # os.path.getctime()  # Get most recent metadata change on Unix, creation on Windows in seconds
+    # os.path.getatime()  # Get most recent access in seconds
+    # os.path.getmtime()  # Get most recent content modification in seconds
+
+    # rename
+    # os.rename()      # Renames a file or directory
+
+    # delete
+    # os.remove()      # Deletes a file
+    # os.rmdir()       # Deletes a directory, only works when the directory is empty
+    # shutil.rmtree()  # Delete an entire directory tree
+
+    # copy
+    # shutil.copy()      # Copies the file src to the file/directory dst. src and dst should be strings.
+    # shutil.copystat()  # Copies metadata like the permission bits, last access time, last modification time, and flags from src to dst.
+    # shutil.copy2()     # Like copy() but also attempts to preserve all file metadata.
+    # shutil.copytree()  # Recursively copy an entire directory tree rooted at src, returning the destination directory.
+
+    # iterate
+    # os.chdir()        # Change the current working directory to path.
+    # os.walk()         # See details in the docs
+
+    # iterate example
+    print("--- os.walk example ---")
+    for root, dirs, files in os.walk(os.path.join(os.getcwd(), "test")):
+        print("root: '{root}'".format(root=root))
+        print("dirs: '{dirs}'".format(dirs=str(dirs)))
+        print("files: '{files}'".format(files=str(files)))
+
 
 def main():
     # use_for_loops()
     # use_range_function()
     # use_comparison()
     use_file_system_operations()
+
 
 main()
