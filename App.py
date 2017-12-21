@@ -243,20 +243,26 @@ def get_value_from_dict(key, dict):
     return result
 
 
-def read_values_from_json_file():
-    read_file_path = os.path.join(os.getcwd(), "test", "read.json")
-    read_file_object = open(read_file_path, "r")
+def read_values_from_json_file(file_path):
+    assert len(str(file_path)) > 0
+    read_file_object = open(file_path, "r")
     file_content_as_string = "".join(read_file_object.readlines())
     file_content_as_dictionary = json.loads(file_content_as_string)
 
     # data structure
-    first_name = get_value_from_dict("firstname", file_content_as_dictionary)
-    last_name = get_value_from_dict("lastname", file_content_as_dictionary)
+    first_name = get_value_from_dict("first_name", file_content_as_dictionary)
+    last_name = get_value_from_dict("last_name", file_content_as_dictionary)
     age = get_value_from_dict("age", file_content_as_dictionary)
 
     # print results
-    print("""firstname: '{firstname}', lastname: '{lastname}', age: '{age}'""".format(firstname=first_name, lastname=last_name, age=age))
+    print("""first_name: '{first_name}', last_name: '{last_name}', age: '{age}'""".format(first_name=first_name, last_name=last_name, age=age))
 
+
+def write_values_to_json_file(file_path):
+    assert len(str(file_path)) > 0
+    write_file_object = open(file_path, "w")
+    json_content_as_dictionary = {"first_name": "Kacper", "last_name": "Bak", "age": 34}
+    json.dump(json_content_as_dictionary, write_file_object, indent=2)
 
 
 def main():
@@ -264,7 +270,11 @@ def main():
     # use_range_function()
     # use_comparison()
     # use_file_system_operations()
-    read_values_from_json_file()
+
+    # read/write JSON file
+    data_file_path = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
+    write_values_to_json_file(data_file_path)
+    read_values_from_json_file(data_file_path)
 
 
 main()
