@@ -248,6 +248,7 @@ def read_values_from_json_file(file_path):
     read_file_object = open(file_path, "r")
     file_content_as_string = "".join(read_file_object.readlines())
     file_content_as_dictionary = json.loads(file_content_as_string)
+    read_file_object.close()
 
     # data structure
     first_name = get_value_from_dict("first_name", file_content_as_dictionary)
@@ -263,6 +264,7 @@ def write_values_to_json_file(file_path):
     write_file_object = open(file_path, "w")
     json_content_as_dictionary = {"first_name": "Kacper", "last_name": "Bak", "age": 34}
     json.dump(json_content_as_dictionary, write_file_object, indent=2)
+    write_file_object.close()
 
 
 def main():
