@@ -267,6 +267,23 @@ def write_values_to_json_file(file_path):
     write_file_object.close()
 
 
+def use_var_args_as_tuple(*args):
+    if len(args) == 0:
+        return None
+    else:
+        result = args[0]
+        for arg in args:
+            if arg > result:
+                result = arg
+        return result
+
+
+def use_var_args_as_dict(x, y, **args):
+    print("""x: '{x}', y: {y}""".format(x=x, y=y))
+    for key in args.keys():
+        print("""key: '{key}', value: '{value}'""".format(key=key, value=args[key]))
+
+
 def main():
     # use_for_loops()
     # use_range_function()
@@ -274,9 +291,12 @@ def main():
     # use_file_system_operations()
 
     # read/write JSON file
-    data_file_path = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
-    write_values_to_json_file(data_file_path)
-    read_values_from_json_file(data_file_path)
+    # data_file_path = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
+    # write_values_to_json_file(data_file_path)
+    # read_values_from_json_file(data_file_path)
+
+    # print(use_var_args_as_tuple(1, 2, 3))
+    # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
 
 
 main()
