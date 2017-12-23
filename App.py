@@ -236,6 +236,10 @@ def use_file_system_operations():
         print("files: '{files}'".format(files=str(files)))
 
 
+def get_abs_parent_dir(your_path):
+    return os.path.abspath(os.path.join(your_path, os.pardir))
+
+
 def get_value_from_dict(key, dict):
     result = None
     if key in dict:
@@ -297,6 +301,7 @@ def main():
 
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
+    print(get_abs_parent_dir(os.getcwd()))
 
 
 main()
