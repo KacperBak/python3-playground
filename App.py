@@ -3,6 +3,7 @@ import string
 import os
 import shutil
 import json
+import subprocess
 
 
 def use_triple_quoted_string():
@@ -288,6 +289,16 @@ def use_var_args_as_dict(x, y, **args):
         print("""key: '{key}', value: '{value}'""".format(key=key, value=args[key]))
 
 
+def is_x64_architecture():
+    result = False
+    const_x64 = 'x86_64'
+    out = subprocess.check_output(["uname", "-m"])
+    out_as_str = out.decode("utf-8").strip()
+    if out_as_str == const_x64:
+        result = True
+    return result
+
+
 def main():
     # use_for_loops()
     # use_range_function()
@@ -301,7 +312,7 @@ def main():
 
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
-    print(get_abs_parent_dir(os.getcwd()))
+    print(is_x64_architecture())
 
 
 main()
