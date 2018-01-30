@@ -4,6 +4,7 @@ import os
 import shutil
 import json
 import subprocess
+import jinja2
 
 
 def use_triple_quoted_string():
@@ -331,6 +332,15 @@ def subprocess_with_pipe(searchstr):
     return result
 
 
+def jinja2_template_usage():
+    template_loader = jinja2.FileSystemLoader(searchpath=os.path.join(os.getcwd(), "jinja2"))
+    template_env = jinja2.Environment(loader=template_loader)
+    template = template_env.get_template("template.file")
+    args = {'port': 123}
+    output = template.render(args)
+    print(output)
+
+
 def main():
     # use_for_loops()
     # use_range_function()
@@ -344,7 +354,7 @@ def main():
 
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
-    print(subprocess_with_pipe("asdf"))
+    jinja2_template_usage()
 
 
 main()
