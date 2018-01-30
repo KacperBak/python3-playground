@@ -299,6 +299,38 @@ def is_x64_architecture():
     return result
 
 
+def execute_bash_prototype():
+    script = "prototype.sh"
+    subprocess.check_call(["chmod", "u+x", os.path.join(os.getcwd(), "bash", script)])
+    out = subprocess.check_output([os.path.join(os.getcwd(), "bash", script)])
+    out_as_str = out.decode("utf-8").strip()
+    print(out_as_str)
+
+
+def subprocess_with_pipe(searchstr):
+
+    result = False
+    try:
+        # look in file '/python3-playground/test/dir0/file0.txt' for 'searchstr'
+        cat_out = subprocess.Popen(["cat", os.path.join(os.getcwd(), "test", "dir0", "file0.txt")], stdout=subprocess.PIPE)
+        grep_out = subprocess.check_output(["grep", "-w", searchstr], stdin=cat_out.stdout)
+
+        # p1 to receive a SIGPIPE if p2 exits before p1
+        # details https://docs.python.org/2/library/subprocess.html#replacing-shell-pipeline
+        cat_out.stdout.close()
+
+        grep_out_as_string = grep_out.decode('utf-8').strip()
+        print(grep_out_as_string)
+        if grep_out_as_string == searchstr:
+            result = True
+
+    except subprocess.CalledProcessError as cpe:
+        print("""grep failed with exit code: '{c}'""".format(c=cpe.returncode))
+    except:
+        print("Something other gone wrong.")
+    return result
+
+
 def main():
     # use_for_loops()
     # use_range_function()
@@ -312,7 +344,7 @@ def main():
 
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
-    print(is_x64_architecture())
+    print(subprocess_with_pipe("asdf"))
 
 
 main()
