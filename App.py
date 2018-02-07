@@ -72,6 +72,14 @@ def use_dictionary():
     for value in dict.values():
         print(value)
 
+    # handle not present key in dict
+    none = dict.get("nothing")
+    assert none is None
+
+    # handle not present key in dict with 'default' value
+    default = dict.get("nothing", "default")
+    assert default == "default"
+
 
 def use_dictionary_with_frozenset():
     # create keys
@@ -257,9 +265,9 @@ def read_values_from_json_file(file_path):
     read_file_object.close()
 
     # data structure
-    first_name = get_value_from_dict("first_name", file_content_as_dictionary)
-    last_name = get_value_from_dict("last_name", file_content_as_dictionary)
-    age = get_value_from_dict("age", file_content_as_dictionary)
+    first_name = file_content_as_dictionary.get("first_name")
+    last_name = file_content_as_dictionary.get("last_name")
+    age = file_content_as_dictionary.get("age")
 
     # print results
     print("""first_name: '{first_name}', last_name: '{last_name}', age: '{age}'""".format(first_name=first_name, last_name=last_name, age=age))
@@ -346,6 +354,7 @@ def main():
     # use_range_function()
     # use_comparison()
     # use_file_system_operations()
+    use_dictionary()
 
     # read/write JSON file
     # data_file_path = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
@@ -354,7 +363,7 @@ def main():
 
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
-    jinja2_template_usage()
+    # jinja2_template_usage()
 
 
 main()
