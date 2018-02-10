@@ -1,5 +1,5 @@
 from animal import Animal
-from dog import Dog
+from dog import Dog, Bernard
 from bird import Bird
 
 
@@ -11,6 +11,7 @@ def basics():
     # instantiate Dog
     default_dog = Dog()
     snoop_dog = Dog("Snoop", "A dog that smokes a lot", 2)
+    booze_dog = Bernard("Johnnie Walker", "St Bernard with the iconic barrel", barrelvolume=1)
 
     # instantiate Bird
     default_bird = Bird()
@@ -19,5 +20,6 @@ def basics():
     # print results
     print(default_dog)
     print(snoop_dog)
+    print(booze_dog)
     print(default_bird)
     print(bird_of_prey)
