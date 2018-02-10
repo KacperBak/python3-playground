@@ -1,12 +1,18 @@
-import stuff
+import procstuff
+import oopstuff
 
 
 def main():
+
+    ##############################
+    # play with procedural stuff #
+    ##############################
+
     # use_for_loops()
     # use_range_function()
     # use_comparison()
     # use_file_system_operations()
-    stuff.use_assert_statement(None)
+    # stuff.use_assert_statement(None)
 
     # read/write JSON file
     # data_file_path = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
@@ -16,5 +22,10 @@ def main():
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
     # jinja2_template_usage()
+
+    #######################
+    # play with oop stuff #
+    #######################
+    oopstuff.basics()
 
 main()
