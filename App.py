@@ -1,5 +1,6 @@
 import procstuff
 import oopstuff
+import libstuff
 
 
 def main():
@@ -26,6 +27,12 @@ def main():
     #######################
     # play with oop stuff #
     #######################
-    oopstuff.basics()
+    # oopstuff.basics()
+
+    #######################
+    # play with lib stuff #
+    #######################
+    libstuff.play_request()
+
 
 main()
