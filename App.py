@@ -23,6 +23,7 @@ def main():
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
     # jinja2_template_usage()
+    print(procstuff.cat_file())
 
     #######################
     # play with oop stuff #
@@ -32,7 +33,7 @@ def main():
     #######################
     # play with lib stuff #
     #######################
-    libstuff.play_request()
+    # libstuff.post_to_mailgun_api()
 
 
 main()

@@ -355,3 +355,9 @@ def jinja2_template_usage():
     args = {'port': 123}
     output = template.render(args)
     print(output)
+
+
+def cat_file():
+    file = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
+    cat_result = subprocess.check_output(["cat", file])
+    return cat_result.decode('utf-8').strip()
