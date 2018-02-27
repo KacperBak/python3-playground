@@ -1,7 +1,7 @@
 import procstuff
 import oopstuff
 import libstuff
-
+from log import *
 
 def main():
 
@@ -23,7 +23,10 @@ def main():
     # print(use_var_args_as_tuple(1, 2, 3))
     # use_var_args_as_dict("x-one", "y-one", z1="z-one", z2="z-two", z3="z-three")
     # jinja2_template_usage()
-    print(procstuff.cat_file())
+    # print(procstuff.cat_file())
+    # print(procstuff.datetime_now_formatted())
+    # print(procstuff.get_interface_inet('en0'))
+    procstuff.use_split_on_string()
 
     #######################
     # play with oop stuff #

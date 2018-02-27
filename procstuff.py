@@ -4,8 +4,16 @@ import os
 import shutil
 import json
 import subprocess
+import pytz
+import datetime
 import jinja2
 
+def use_split_on_string():
+    input = "first-second-third"
+    result = input.split("-")
+    assert result[0] == "first"
+    assert result[1] == "second"
+    assert result[2] == "third"
 
 def use_triple_quoted_string():
     triple_qutoed_string = """"Hello" world'!'"""
@@ -361,3 +369,30 @@ def cat_file():
     file = os.path.join(os.getcwd(), "test", "read_write_json", "data.json")
     cat_result = subprocess.check_output(["cat", file])
     return cat_result.decode('utf-8').strip()
+
+
+def datetime_now():
+    return str(datetime.datetime.now())
+
+
+def datetime_now_formatted():
+    return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+def basic_comparisons():
+    ten = 10
+    assert 10 > 9
+    assert 10 >= 10
+    assert ten >= 10
+
+
+def get_interface_inet(iface):
+    assert isinstance(iface, str)
+    assert len(str(iface)) > 0
+
+    # bash: ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
+    ifconfig_out = subprocess.Popen(["ifconfig", iface], stdout=subprocess.PIPE)
+    return subprocess.check_output(["grep", "inet 1"], stdin=ifconfig_out.stdout).decode('utf-8').strip()
+    # grep_out = subprocess.Popen(["grep", """\'inet addr:\'"""], stdin=ifconfig_out.stdout, stdout=subprocess.PIPE)
+    # cut_out = subprocess.Popen(["cut", "-d:", "-f2"], stdin=grep_out.stdout, stdout=subprocess.PIPE)
+    # return subprocess.check_output(["awk", "{print $1}"], stdin=cut_out.stdout).decode('Utf-8').strip()
