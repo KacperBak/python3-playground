@@ -26,7 +26,7 @@ def main():
     # print(procstuff.cat_file())
     # print(procstuff.datetime_now_formatted())
     # print(procstuff.get_interface_inet('en0'))
-    procstuff.use_split_on_string()
+    procstuff.recursive_file_walk()
 
     #######################
     # play with oop stuff #

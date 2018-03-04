@@ -396,3 +396,11 @@ def get_interface_inet(iface):
     # grep_out = subprocess.Popen(["grep", """\'inet addr:\'"""], stdin=ifconfig_out.stdout, stdout=subprocess.PIPE)
     # cut_out = subprocess.Popen(["cut", "-d:", "-f2"], stdin=grep_out.stdout, stdout=subprocess.PIPE)
     # return subprocess.check_output(["awk", "{print $1}"], stdin=cut_out.stdout).decode('Utf-8').strip()
+
+
+def recursive_file_walk():
+    path = os.path.join(os.getcwd(), "test")
+    for root, dirs, files in os.walk(path):
+        print("root: '{root}'".format(root=root))
+        print("dirs: '{dirs}'".format(dirs=str(dirs)))
+        print("files: '{files}'".format(files=str(files)))
